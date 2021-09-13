@@ -7,6 +7,7 @@ authors = ["Taiki <taiki.iwahori.bn@furuno.co.jp>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 tweepy = "^3.10.0"
+black = "^21.8b0"
 
 [tool.poetry.dev-dependencies]
 
