@@ -2,7 +2,7 @@ import pandas as pd
 import tweepy
 
 
-def main():
+def _get_api():
     df_key = pd.read_json("key.json")
 
     # 認証に必要なキーとトークン
@@ -15,13 +15,23 @@ def main():
     auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
-    # キーワードからツイートを取得
     api = tweepy.API(auth)
+    return api
+
+
+def main():
+    api = _get_api()
+
+    # キーワードからツイートを取得
     tweets = api.search(q=["Python"], count=10)
 
     for tweet in tweets:
         print("-----------------")
         print(tweet.text)
+
+    public_tweets = api.home_timeline()
+    # つぶやく
+    api.update_status("test")
     return
 
 
