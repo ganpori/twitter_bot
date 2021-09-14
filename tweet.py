@@ -27,7 +27,7 @@ def main():
     with path_message_txt.open("r") as f:
         message = f.readline()
 
-    api.update_with_media(status=message, filename="スクリーンショット 2021-09-14 192825.png")
+    api.update_with_media(status=message, filename="image.png")
 
     return
 
