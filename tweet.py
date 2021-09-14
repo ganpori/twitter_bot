@@ -1,3 +1,4 @@
+from pathlib import Path
 import pandas as pd
 import tweepy
 
@@ -22,19 +23,11 @@ def _get_api():
 def main():
     api = _get_api()
 
-    # キーワードからツイートを取得
-    tweets = api.search(q=["Python"], count=10)
+    path_message_txt = Path("message.txt")
+    with path_message_txt.open("r") as f:
+        message = f.readline()
 
-    for tweet in tweets:
-        print("-----------------")
-        print(tweet.text)
-
-    public_tweets = api.home_timeline()
-    # つぶやく
-    api.update_status("test1")
-    api.update_with_media(
-        status="test_media", filename="スクリーンショット 2021-09-14 192825.png"
-    )
+    api.update_with_media(status=message, filename="スクリーンショット 2021-09-14 192825.png")
 
     return
 
