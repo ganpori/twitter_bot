@@ -31,7 +31,11 @@ def main():
 
     public_tweets = api.home_timeline()
     # つぶやく
-    api.update_status("test")
+    api.update_status("test1")
+    api.update_with_media(
+        status="test_media", filename="スクリーンショット 2021-09-14 192825.png"
+    )
+
     return
 
 
