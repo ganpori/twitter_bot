@@ -7,6 +7,7 @@ import plotly.express as px
 
 def plot(df, title=None):
     fig = px.scatter(df, title=title)
+    fig.update_yaxes(title_text="y")
     fig.write_image("image.png")
     return
 
