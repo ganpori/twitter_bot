@@ -6,7 +6,7 @@ import plotly.express as px
 
 
 def plot(df, title=None):
-    fig = px.line(df, title=title)
+    fig = px.scatter(df, title=title)
     fig.write_image("image.png")
     return
 
@@ -40,7 +40,7 @@ def main():
     with path_message_txt.open("w") as f:
         f.write(message)
 
-    x = np.arange(-2 * np.pi, 2 * np.pi, step=0.02)
+    x = np.arange(-2 * np.pi, 2 * np.pi, step=0.06)
     y = func(x)
 
     x_plus_h = x + h
