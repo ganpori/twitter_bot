@@ -50,6 +50,7 @@ def main():
         data={fundmental_message: y, diffferential_message: dy_dx},
         index=x,
     )
+    df.index.name = "x"
     plot(df, title=message)
     return
 
