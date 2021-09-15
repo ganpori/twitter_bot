@@ -5,6 +5,13 @@ import pandas as pd
 import plotly.express as px
 
 
+def normal_distribution(x):
+    mean = 0
+    std = 1
+    y = (1 / (2 * np.pi * std * 2) ** 0.5) * np.exp(-((x - mean) ** 2) / (2 * std ** 2))
+    return y
+
+
 def plot(df, title=None):
     fig = px.scatter(df, title=title)
     fig.update_yaxes(title_text="y")
@@ -17,6 +24,7 @@ def create_dict_message_candidate():
         "y=cos(x)": np.cos,
         "y=sin(x)": np.sin,
         "y=tan(x)": np.tan,
+        "y=標準正規分布(x)": normal_distribution,
     }
     return dict_message_candidate
 
