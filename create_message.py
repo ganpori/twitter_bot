@@ -44,7 +44,7 @@ def generate_str_polynomial(list_coefficient):
             str_coefficient = f"+{coefficient}"
         else:
             str_coefficient = str(coefficient)
-        str_polynomial = f"{str_coefficient}x^{i}{str_coefficient}"
+        str_polynomial = f"{str_coefficient}x^{i}{str_polynomial}"
 
     if coefficient >= 0:
         str_polynomial = str_polynomial[1:]  # 最後の+だけ除去する
