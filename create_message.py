@@ -78,7 +78,7 @@ def main():
     fundmental_message, func = select_dict_message(dict_message_candidate)
     h = np.random.chisquare(1)  # 自由度１のχ二乗分布、0以上で0付近が多い
 
-    message = f"f(x)={fundmental_message}, {h=}"
+    message = f"f(x)={fundmental_message}, {h=:.5f}"
     path_message_txt = Path("message.txt")
     with path_message_txt.open("w") as f:
         f.write(message)
