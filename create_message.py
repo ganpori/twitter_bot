@@ -41,10 +41,8 @@ def main():
     dict_message_candidate = create_dict_message_candidate()
     fundmental_message, func = select_dict_message(dict_message_candidate)
     h = np.random.chisquare(1)  # 自由度１のχ二乗分布、0以上で0付近が多い
-    diffferential_message = f"({fundmental_message[:-1]}+h) - {fundmental_message})/h"
 
-    message = f"{fundmental_message}, {diffferential_message}, {h=}"
-
+    message = f"f(x)={fundmental_message}, {h=}"
     path_message_txt = Path("message.txt")
     with path_message_txt.open("w") as f:
         f.write(message)
@@ -54,7 +52,7 @@ def main():
 
     x_plus_h = x + h
     dy_dx = (func(x_plus_h) - func(x)) / h
-
+    diffferential_message = f"(f(x+h)-f(x))/h"
     df = pd.DataFrame(
         data={fundmental_message: y, diffferential_message: dy_dx},
         index=x,
