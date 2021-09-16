@@ -14,17 +14,16 @@ def normal_distribution(x):
 
 def plot(df, title=None):
     fig = px.scatter(df, title=title)
-    fig.update_yaxes(title_text="y")
     fig.write_image("image.png")
     return
 
 
 def create_dict_message_candidate():
     dict_message_candidate = {
-        "y=cos(x)": np.cos,
-        "y=sin(x)": np.sin,
-        "y=tan(x)": np.tan,
-        "y=標準正規分布(x)": normal_distribution,
+        "cos(x)": np.cos,
+        "sin(x)": np.sin,
+        "tan(x)": np.tan,
+        "標準正規分布(x)": normal_distribution,
     }
     return dict_message_candidate
 
