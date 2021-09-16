@@ -18,13 +18,49 @@ def plot(df, title=None):
     return
 
 
+def generate_polynomial_values(max_degree=10, max_coefficient=20):
+    degree = random.randint(0, max_degree)
+
+    list_coefficient = [
+        random.randint(-max_coefficient, max_coefficient) for _ in range(degree + 1)
+    ]  # +1は0次の項
+    return list_coefficient
+
+
+def func_polynomial(list_coefficient):
+    def _func_polynomial(x):
+        value = 0
+        for i, coefficient in enumerate(list_coefficient):
+            value += coefficient * x ** i
+        return value
+
+    return _func_polynomial
+
+
+def generate_str_polynomial(list_coefficient):
+    str_polynomial = ""
+    for i, coefficient in enumerate(list_coefficient):
+        if coefficient >= 0:
+            str_coefficient = f"+{coefficient}"
+        else:
+            str_coefficient = str(coefficient)
+        str_polynomial = f"{str_coefficient}x^{i}{str_coefficient}"
+
+    if coefficient >= 0:
+        str_polynomial = str_polynomial[1:]  # 最後の+だけ除去する
+
+    return str_polynomial
+
+
 def create_dict_message_candidate():
+    list_coefficient = generate_polynomial_values()
+    str_polynomial = generate_str_polynomial(list_coefficient)
     dict_message_candidate = {
         "cos(x)": np.cos,
         "sin(x)": np.sin,
         "tan(x)": np.tan,
         "標準正規分布(x)": normal_distribution,
-        "5x^3-2x^2+1": lambda x: 5 * x ** 3 - 2 * x ** 2 + 1,
+        str_polynomial: func_polynomial(list_coefficient),  # カリー化して部分適用した関数を与える
     }
     return dict_message_candidate
 
