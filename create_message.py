@@ -24,6 +24,7 @@ def create_dict_message_candidate():
         "sin(x)": np.sin,
         "tan(x)": np.tan,
         "標準正規分布(x)": normal_distribution,
+        "5x^3-2x^2+1": lambda x: 5 * x ** 3 - 2 * x ** 2 + 1,
     }
     return dict_message_candidate
 
