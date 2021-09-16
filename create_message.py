@@ -41,7 +41,7 @@ def main():
     dict_message_candidate = create_dict_message_candidate()
     fundmental_message, func = select_dict_message(dict_message_candidate)
     h = np.random.chisquare(1)  # 自由度１のχ二乗分布、0以上で0付近が多い
-    diffferential_message = fundmental_message[:-1] + "+h)/h"
+    diffferential_message = f"({fundmental_message[:-1]}+h) - {fundmental_message})/h"
 
     message = f"{fundmental_message}, {diffferential_message}, {h=}"
 
