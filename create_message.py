@@ -48,7 +48,7 @@ def generate_str_polynomial(list_coefficient):
 
     if coefficient >= 0:
         str_polynomial = str_polynomial[1:]  # 最後の+だけ除去する
-
+    str_polynomial = str_polynomial[:-3]  # x^0を削除
     return str_polynomial
 
 
