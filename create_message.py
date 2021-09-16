@@ -18,7 +18,7 @@ def plot(df, title=None):
     return
 
 
-def generate_polynomial_values(max_degree=10, max_coefficient=20):
+def generate_polynomial_values(max_degree=5, max_coefficient=9):
     degree = random.randint(0, max_degree)
 
     list_coefficient = [
