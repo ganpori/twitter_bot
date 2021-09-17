@@ -82,19 +82,25 @@ def calc_diff(func, x, h):
 def main():
     dict_message_candidate = create_dict_message_candidate()
     fundmental_message, func = select_dict_message(dict_message_candidate)
-    h = np.random.chisquare(1)  # 自由度１のχ二乗分布、0以上で0付近が多い
+    h1 = np.random.chisquare(1)  # 自由度１のχ二乗分布、0以上で0付近が多い
+    h2 = np.random.chisquare(2)  # 自由度１のχ二乗分布
     diffferential_message = f"(f(x+h)-f(x))/h"
-    message = f"f(x)={fundmental_message}, {diffferential_message}, {h=:.5f}"
+    message = f"f(x)={fundmental_message}, {diffferential_message}, {h1=:.5f},{h2=:.5f}"
     path_message_txt = Path("message.txt")
     with path_message_txt.open("w") as f:
         f.write(message)
 
     x = np.arange(-2 * np.pi, 2 * np.pi, step=0.06)
     y = func(x)
-    dy_dx = calc_diff(func=func, x=x, h=h)
+    dy_dx1 = calc_diff(func=func, x=x, h=h1)
+    dy_dx2 = calc_diff(func=func, x=x, h=h2)
 
     df = pd.DataFrame(
-        data={fundmental_message: y, diffferential_message: dy_dx},
+        data={
+            fundmental_message: y,
+            "(f(x+h1)-f(x))/h1": dy_dx1,
+            "(f(x+h2)-f(x))/h2": dy_dx2,
+        },
         index=x,
     )
     df.index.name = "x"
