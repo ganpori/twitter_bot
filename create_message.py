@@ -40,8 +40,10 @@ def func_polynomial(list_coefficient):
 def generate_str_polynomial(list_coefficient):
     str_polynomial = ""
     for i, coefficient in enumerate(list_coefficient):
-        if coefficient >= 0:
+        if coefficient > 0:
             str_coefficient = f"+{coefficient}"
+        elif coefficient == 0:
+            continue
         else:
             str_coefficient = str(coefficient)
         str_polynomial = f"{str_coefficient}x^{i}{str_polynomial}"
