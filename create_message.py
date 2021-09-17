@@ -86,7 +86,7 @@ def main():
     dict_message_candidate = create_dict_message_candidate()
     fundmental_message, func = select_dict_message(dict_message_candidate)
     h1 = np.random.chisquare(1)  # 自由度１のχ二乗分布、0以上で0付近が多い
-    h2 = np.random.chisquare(2)  # 自由度１のχ二乗分布
+    h2 = np.random.chisquare(1)  # 自由度１のχ二乗分布
     diffferential_message = f"(f(x+h)-f(x))/h"
     message = f"f(x)={fundmental_message}, {diffferential_message}, {h1=:.5f},{h2=:.5f}"
     path_message_txt = Path("message.txt")
