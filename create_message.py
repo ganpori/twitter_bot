@@ -18,9 +18,8 @@ def plot(df, title=None):
     return
 
 
-def generate_polynomial_values(max_degree=5, max_coefficient=9):
+def generate_polynomial_values(max_degree=3, max_coefficient=9):
     degree = random.randint(0, max_degree)
-
     list_coefficient = [
         random.randint(-max_coefficient, max_coefficient) for _ in range(degree + 1)
     ]  # +1は0次の項
