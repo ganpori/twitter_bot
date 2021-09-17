@@ -44,7 +44,9 @@ def generate_str_polynomial(list_coefficient):
             str_coefficient = f"+{coefficient}"
         elif coefficient == 0:
             continue
-        else:
+        elif coefficient == -1:  # -1の1を表示しないようにする
+            str_coefficient = "-"
+        else:  # -1以外の負の場合。そのまま表示。
             str_coefficient = str(coefficient)
         str_polynomial = f"{str_coefficient}x^{i}{str_polynomial}"
 
