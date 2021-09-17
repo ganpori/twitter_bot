@@ -73,6 +73,12 @@ def select_dict_message(dict_message_candidate):
     return key, dict_message_candidate[key]
 
 
+def calc_diff(func, x, h):
+    x_plus_h = x + h
+    dy_dx = (func(x_plus_h) - func(x)) / h
+    return dy_dx
+
+
 def main():
     dict_message_candidate = create_dict_message_candidate()
     fundmental_message, func = select_dict_message(dict_message_candidate)
@@ -85,9 +91,8 @@ def main():
 
     x = np.arange(-2 * np.pi, 2 * np.pi, step=0.06)
     y = func(x)
+    dy_dx = calc_diff(func=func, x=x, h=h)
 
-    x_plus_h = x + h
-    dy_dx = (func(x_plus_h) - func(x)) / h
     df = pd.DataFrame(
         data={fundmental_message: y, diffferential_message: dy_dx},
         index=x,
