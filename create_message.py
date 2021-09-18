@@ -14,6 +14,7 @@ def normal_distribution(x):
 
 def plot(df, title=None):
     fig = px.scatter(df, title=title)
+    fig.write_html("graph.html")
     fig.write_image("image.png")
     return
 
