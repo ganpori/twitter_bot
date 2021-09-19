@@ -12,9 +12,9 @@ def normal_distribution(x):
     return y
 
 
-def plot(df, title=None):
+def plot(df,filename, title=None):
     fig = px.scatter(df, title=title)
-    fig.write_html("graph.html")
+    fig.write_html(filename)
     fig.write_image("image.png")
     return
 
@@ -90,7 +90,9 @@ def main():
     h2 = np.random.chisquare(1)  # 自由度１のχ二乗分布
     diffferential_message = f"(f(x+h)-f(x))/h"
     title = f"f(x)={fundmental_message}, {diffferential_message}, {h1=:.4f},{h2=:.4f}"
-    message = title + "http://18.222.32.112/graph/graph.html"
+    
+    filename = "graph.html"
+    message = f"{title}, http://18.222.32.112/graph/{filename}"
     path_message_txt = Path("message.txt")
     with path_message_txt.open("w") as f:
         f.write(message)
@@ -109,7 +111,7 @@ def main():
         index=x,
     )
     df.index.name = "x"
-    plot(df, title=title)
+    plot(df, title=title, filename=filename)
     return
 
 
