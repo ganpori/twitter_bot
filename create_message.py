@@ -89,7 +89,8 @@ def main():
     h1 = np.random.chisquare(1)  # 自由度１のχ二乗分布、0以上で0付近が多い
     h2 = np.random.chisquare(1)  # 自由度１のχ二乗分布
     diffferential_message = f"(f(x+h)-f(x))/h"
-    message = f"f(x)={fundmental_message}, {diffferential_message}, {h1=:.4f},{h2=:.4f}, http://18.222.32.112/graph/graph.html"
+    title = f"f(x)={fundmental_message}, {diffferential_message}, {h1=:.4f},{h2=:.4f}"
+    message = title + "http://18.222.32.112/graph/graph.html"
     path_message_txt = Path("message.txt")
     with path_message_txt.open("w") as f:
         f.write(message)
@@ -108,7 +109,7 @@ def main():
         index=x,
     )
     df.index.name = "x"
-    plot(df, title=message)
+    plot(df, title=title)
     return
 
 
