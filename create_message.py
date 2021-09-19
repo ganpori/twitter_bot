@@ -62,7 +62,7 @@ def create_dict_message_candidate():
     dict_message_candidate = {
         "cos(x)": np.cos,
         "sin(x)": np.sin,
-        "標準正規分布(x)": normal_distribution,
+        "StandardNormalDistribution(x)": normal_distribution,
         str_polynomial: func_polynomial(list_coefficient),  # カリー化して部分適用した関数を与える
         "e^x": np.exp,
     }
