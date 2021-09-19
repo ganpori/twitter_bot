@@ -12,9 +12,9 @@ def normal_distribution(x):
     return y
 
 
-def plot(df,filename, title=None):
+def plot(df,path_html, title=None):
     fig = px.scatter(df, title=title)
-    fig.write_html(filename)
+    fig.write_html(path_html)
     fig.write_image("image.png")
     return
 
@@ -111,7 +111,7 @@ def main():
         index=x,
     )
     df.index.name = "x"
-    plot(df, title=title, filename=filename)
+    plot(df, title=title, path_html=Path(f"{filename}"))
     return
 
 
