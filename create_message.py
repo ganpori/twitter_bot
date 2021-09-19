@@ -1,5 +1,6 @@
 from pathlib import Path
 import random
+import sys
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -111,7 +112,13 @@ def main():
         index=x,
     )
     df.index.name = "x"
-    plot(df, title=title, path_html=Path(f"{filename}"))
+
+    if len(sys.argv) <=1:
+        path_html = Path(filename)
+    else:
+        arg = sys.argv[1]
+        path_html = Path(arg) / filename
+    plot(df, title=title, path_html=path_html)
     return
 
 
