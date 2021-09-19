@@ -93,7 +93,7 @@ def main():
     title = f"f(x)={fundmental_message}, {diffferential_message}, {h1=:.4f},{h2=:.4f}"
     
     filename = "graph.html"
-    message = f"{title}, http://18.222.32.112/graph/{filename}"
+    message = f"{title}, http://18.191.254.56/graph/{filename}"
     path_message_txt = Path("message.txt")
     with path_message_txt.open("w") as f:
         f.write(message)
