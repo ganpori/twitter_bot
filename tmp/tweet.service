@@ -5,10 +5,10 @@ After=autologin@tty1.service
 [Service]
 Type=simple
 WorkingDirectory=/home/ubuntu/twitter_bot
-ExecStartPre=/home/ubuntu/twitter_bot/.venv/bin/python /home/ubuntu/twitter_bot/create_message.py
+ExecStartPre=/home/ubuntu/twitter_bot/.venv/bin/python /home/ubuntu/twitter_bot/create_message.py /var/www/html/graph
 ExecStart=/home/ubuntu/twitter_bot/.venv/bin/python /home/ubuntu/twitter_bot/tweet.py
 Restart=no
-User=ubuntu
+User=root
 
 [Install]
 WantedBy=default.target
