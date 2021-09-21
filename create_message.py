@@ -84,6 +84,12 @@ def calc_diff(func, x, h):
     return dy_dx
 
 
+def create_filename():
+    time_now = pd.Timestamp.now()
+    time_str = time_now.strftime("%Y%m%d%H")
+    filename = time_str + ".html"
+    return filename
+
 def main():
     dict_message_candidate = create_dict_message_candidate()
     fundmental_message, func = select_dict_message(dict_message_candidate)
@@ -92,7 +98,7 @@ def main():
     diffferential_message = f"(f(x+h)-f(x))/h"
     title = f"f(x)={fundmental_message}, {diffferential_message}, {h1=:.4f},{h2=:.4f}"
     
-    filename = "graph.html"
+    filename = create_filename()
     message = f"{title}, http://18.191.254.56/graph/{filename}"
     path_message_txt = Path("message.txt")
     with path_message_txt.open("w") as f:
