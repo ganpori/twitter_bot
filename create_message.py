@@ -62,6 +62,7 @@ def create_dict_message_candidate():
     str_polynomial = generate_str_polynomial(list_coefficient)
     dict_message_candidate = {
         "sin(x)": np.sin,
+        "sinc(x)=sin(πx)/πx": lambda  x : np.sin(np.pi*x)/(np.pi*x),
         "StandardNormalDistribution(x)": normal_distribution,
         str_polynomial: func_polynomial(list_coefficient),  # カリー化して部分適用した関数を与える
         "e^x": np.exp,
